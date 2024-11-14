@@ -1,45 +1,27 @@
-local lsp = require('lsp-zero').preset({
-  name = 'minimal',
-  set_lsp_keymaps = true,
-  manage_nvim_cmp = true,
-  suggest_lsp_servers = false,
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('user_lsp_attach', {clear = true}),
+  callback = function(event)
+    local opts = {buffer = event.buf}
+
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_next, { desc = '[N]ext [D]iagnostic'})
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_prev, { desc = '[P]revious [D]iagnostic'})
+    vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, { desc = '[R]ename'})
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[A]ction'})
+    vim.keymap.set('n', '<leader>cd', require('telescope.builtin').diagnostics, { desc = "[D]iagnostics"})
+    vim.keymap.set('n', '<leader>ct', require('telescope.builtin').lsp_type_definitions, { desc = '[T]ype Definition'})
+    vim.keymap.set('n', '<leader>cs', require('telescope.builtin').lsp_document_symbols, { desc = 'Document [S]ymbols'})
+    vim.keymap.set('n', '<leader>cf', vim.lsp.buf.format, { desc = '[F]ormat buffer'})
+    vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, { desc = '[G]oto [D]efinition'})
+    vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { desc = '[G]oto [R]eferences'})
+    vim.keymap.set('n', 'gI', require('telescope.builtin').lsp_implementations, { desc = '[G]oto [I]mplementation'})
+    vim.keymap.set('n', '<S-k>', vim.lsp.buf.hover, {desc = 'Open Documentations'})
+  end,
 })
 
-lsp.ensure_installed({
-	'tsserver',
-	'eslint',
-	'rust_analyzer'
-})
+local lsp_config = require('lspconfig')
 
--- (Optional) Configure lua language server for neovim
-lsp.nvim_workspace()
-lsp.setup()
+lsp_config.ts_ls.setup({})
 
-vim.diagnostic.config({
-    -- Limit length
-    open_float = {
-        width = 80,
-    },
-    -- Enable border
-    float = {
-        style = "minimal",
-        border = "rounded",
-        source = "always",
-        header = "",
-        prefix = "",
-    },
-})
+lsp_config.lua_ls.setup({})
 
-local keymap = vim.keymap.set
-
--- Diagnostic keymaps
-keymap("n", "<space>e", vim.diagnostic.open_float)
-keymap("n", "[d", vim.diagnostic.goto_prev)
-keymap("n", "]d", vim.diagnostic.goto_next)
-keymap("n", "<leader>q", vim.diagnostic.setloclist)
-
-local signs = { Error = "×", Warn = "!", Hint = "h", Info = "i" }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
+lsp_config.rust_analyzer.setup({})
