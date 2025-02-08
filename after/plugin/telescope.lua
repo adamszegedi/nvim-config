@@ -20,6 +20,9 @@ telescope.setup {
       },
       lsp_references = {
         initial_mode = "normal",
+      },
+      diagnostics = {
+        wrap_results = true,
       }
     },
     extensions = {
