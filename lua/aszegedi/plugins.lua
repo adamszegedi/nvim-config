@@ -23,6 +23,7 @@ require("lazy").setup(
     { 'navarasu/onedark.nvim' },
     { "ellisonleao/gruvbox.nvim",               priority = 1000,  config = true,   opts = ... },
     { "shaunsingh/nord.nvim",                   priority = 1000, },
+    { 'rebelot/kanagawa.nvim',                  priority = 1000, opts = {}, },
     { "folke/tokyonight.nvim",                  lazy = false,     priority = 1000, opts = {}, },
   }
 );
