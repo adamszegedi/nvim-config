@@ -5,7 +5,6 @@ vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
 vim.opt.number = true
-
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
 
@@ -55,8 +54,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank()
     end,
 })
-
- vim.api.nvim_create_user_command(
-    "CopyRelPath",
-    "call setreg('+', expand('%'))", {}
- )

@@ -1,1 +1,1 @@
-require("aszegedi")
+require("config")
