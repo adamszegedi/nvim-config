@@ -5,7 +5,7 @@ return {
         opts = {
             spec = {
                 { '<leader>f', group = '[F]ind' },
-                { '<leader>g', group = '[G]it' },
+                { '<leader>b', group = '[B]uffer' },
             },
         },
     },

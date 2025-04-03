@@ -2,5 +2,7 @@ vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line up" })       --
 vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line down" })     -- move line down(n)
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move line up" })   -- move line up(v)
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move line down" }) -- move line down(v)
-
-
+vim.keymap.set("n", "<leader>bc", "<Cmd>bd!|bnext<Cr>", { desc = "[C]lose the current buffer" })
+vim.keymap.set("n", "<leader>bd", "<Cmd>%bd|e#|bd#<Cr>", { desc = "[D]elete all buffers" })
+vim.keymap.set("n", "<leader>bn", "<Cmd>enew<Cr>", { desc = "[C]lose the current buffer" })
+vim.keymap.set("n", "<leader>w", "<Cmd>WhichKey<Cr>", { desc = "[W]hichKey" })
