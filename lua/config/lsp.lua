@@ -3,7 +3,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         if not client then return end
 
-        if vim.bo.filetype == "lua" then
+        local filetype = vim.bo.filetype
+
+        if filetype == "lua" or filetype == "rust" then
             -- Format the current buffer on save
             vim.api.nvim_create_autocmd('BufWritePre', {
                 buffer = args.buf,
