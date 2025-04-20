@@ -4,10 +4,11 @@ require('config.keymaps')
 require('config.lsp')
 
 require("lazy").setup({
-    spec = { {
+    spec = {
         { import = "config.plugins" },
         { 'j-hui/fidget.nvim',      opts = {} },
-    } }
+        { 'neovim/nvim-lspconfig' },
+    }
 })
 
 vim.cmd [[colorscheme kanagawa-wave]]
