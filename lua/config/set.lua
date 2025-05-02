@@ -33,7 +33,7 @@ vim.opt.undofile = true
 local undodir = (os.getenv("HOME") or os.getenv("UserProfile")) .. "/.vim/undodir"
 vim.opt.undodir = undodir
 
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 
