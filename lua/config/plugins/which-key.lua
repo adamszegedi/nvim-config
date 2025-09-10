@@ -6,6 +6,7 @@ return {
             spec = {
                 { '<leader>f', group = '[F]ind' },
                 { '<leader>b', group = '[B]uffer' },
+                { '<leader>g', group = '[G]it' },
             },
         },
     },

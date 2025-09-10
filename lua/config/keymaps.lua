@@ -6,5 +6,6 @@ vim.keymap.set("n", "<leader>bc", "<Cmd>bd!|bnext<Cr>", { desc = "[C]lose the cu
 vim.keymap.set("n", "<leader>bd", "<Cmd>%bd|e#|bd#<Cr>", { desc = "[D]elete all buffers" })
 vim.keymap.set("n", "<leader>bn", "<Cmd>enew<Cr>", { desc = "[C]lose the current buffer" })
 vim.keymap.set("n", "<leader>w", "<Cmd>WhichKey<Cr>", { desc = "[W]hichKey" })
+vim.keymap.set( "n", "<leader>gb", ":Blame<CR>", { noremap = true, silent = true, desc = "Git [B]lame" })
 vim.keymap.set("n", "grD", function() vim.lsp.buf.declaration() end, { desc = "vim.lsp.buf.declaration()" })
 vim.keymap.set("n", "grd", function() vim.lsp.buf.definition() end, { desc = "vim.lsp.buf.definition()" })
