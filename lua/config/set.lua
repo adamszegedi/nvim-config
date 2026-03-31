@@ -46,8 +46,6 @@ vim.opt.colorcolumn = "120"
 vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "both"
--- Sets the floating window borders
-vim.opt.winborder = 'rounded'
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking (copying) text',
