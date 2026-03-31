@@ -34,6 +34,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- Diagnostics
 vim.diagnostic.config({
     jump = {
-        float = true,
+        on_jump = function()
+            vim.diagnostic.open_float()
+        end,
     }
 })

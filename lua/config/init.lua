@@ -7,9 +7,10 @@ require('config.lsp')
 require("lazy").setup({
     spec = {
         { import = "config.plugins" },
-        { 'j-hui/fidget.nvim',       opts = {} },
+        { 'j-hui/fidget.nvim',           opts = {} },
+        { "nvim-tree/nvim-web-devicons", opts = {} },
         { 'neovim/nvim-lspconfig' },
-        { "williamboman/mason.nvim", opts = {} },
+        { "williamboman/mason.nvim",     opts = {} },
     }
 })
 
