@@ -45,6 +45,7 @@ vim.opt.laststatus = 3
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "120"
 vim.opt.termguicolors = true
+vim.o.winborder = 'rounded'
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "both"
 

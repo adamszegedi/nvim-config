@@ -37,5 +37,10 @@ vim.diagnostic.config({
         on_jump = function()
             vim.diagnostic.open_float()
         end,
-    }
+    },
+    float = {
+        border = 'rounded',
+        pad_top = 1,
+        pad_bottom = 1,
+    },
 })
