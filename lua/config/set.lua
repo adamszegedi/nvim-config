@@ -1,4 +1,3 @@
-vim.scriptencoding = "utf-8"
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -10,8 +9,6 @@ vim.opt.mouse = "a"
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
--- Sets the character encoding used inside Vim.
-vim.opt.encoding = "utf-8"
 -- Sets the character encoding for the file buffer
 vim.opt.fileencoding = "utf-8"
 

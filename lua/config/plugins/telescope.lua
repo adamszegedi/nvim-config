@@ -25,12 +25,12 @@ return {
                 }
             }
             require('telescope').load_extension('fzf')
-            vim.keymap.set("n", "<space>fh", require('telescope.builtin').help_tags, { desc = "[H]elp Tags" })
-            vim.keymap.set("n", "<space>fd", require('telescope.builtin').find_files, { desc = "[F]iles" })
-            vim.keymap.set("n", "<space>fg", require('telescope.builtin').live_grep, { desc = "[G]rep" })
-            vim.keymap.set("n", "<space>ff", require('telescope.builtin').git_files, { desc = "Git [F]iles" })
-            vim.keymap.set("n", "<space>fs", require('telescope.builtin').git_status, { desc = "Git [S]tatus" })
-            vim.keymap.set("n", "<space><space>", require('telescope.builtin').buffers)
+            vim.keymap.set("n", "<leader>fh", require('telescope.builtin').help_tags, { desc = "[H]elp Tags" })
+            vim.keymap.set("n", "<leader>fd", require('telescope.builtin').find_files, { desc = "[F]iles" })
+            vim.keymap.set("n", "<leader>fg", require('telescope.builtin').live_grep, { desc = "[G]rep" })
+            vim.keymap.set("n", "<leader>ff", require('telescope.builtin').git_files, { desc = "Git [F]iles" })
+            vim.keymap.set("n", "<leader>fs", require('telescope.builtin').git_status, { desc = "Git [S]tatus" })
+            vim.keymap.set("n", "<leader><leader>", require('telescope.builtin').buffers)
         end
     }
 }
