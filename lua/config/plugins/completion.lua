@@ -17,12 +17,23 @@ return {
 			},
 
 			completion = {
-				menu = { border = 'rounded' },
-				documentation = { window = { border = 'rounded' } },
+				menu = {
+					border = 'rounded',
+					winhighlight = 'Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None',
+				},
+				documentation = {
+					window = {
+						border = 'rounded',
+						winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder',
+					},
+				},
 			},
 			signature = {
 				enabled = true,
-				window = { border = 'rounded' },
+				window = {
+					border = 'rounded',
+					winhighlight = 'Normal:BlinkCmpSignatureHelp,FloatBorder:BlinkCmpSignatureHelpBorder',
+				},
 			},
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
