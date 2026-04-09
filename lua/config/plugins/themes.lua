@@ -17,20 +17,17 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 return {
     {
         'rebelot/kanagawa.nvim',
+        lazy = true,
         priority = 1000,
         opts = {},
         config = function()
             vim.o.background = "dark"
-            vim.cmd([[colorscheme kanagawa-wave]])
         end,
     },
     {
         'folke/tokyonight.nvim',
         lazy = true,
         opts = {},
-        config = function()
-            vim.cmd([[colorscheme tokyonight]])
-        end,
     },
     {
         'ellisonleao/gruvbox.nvim',
@@ -38,6 +35,18 @@ return {
         opts = {},
         config = function()
             vim.cmd([[colorscheme gruvbox]])
+        end,
+    },
+    {
+        'sainnhe/gruvbox-material',
+        priority = 1000,
+        config = function()
+            vim.o.background = 'dark'
+            vim.g.gruvbox_material_background = 'medium'      -- the one we want: #32302f
+            vim.g.gruvbox_material_foreground = 'material'  -- muted parchment #D4BE98
+            vim.g.gruvbox_material_enable_italic = true
+            vim.g.gruvbox_material_better_performance = 1
+            vim.cmd.colorscheme('gruvbox-material')
         end,
     },
 }
