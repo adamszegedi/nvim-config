@@ -31,6 +31,8 @@ return {
             vim.keymap.set("n", "<leader>ff", require('telescope.builtin').git_files, { desc = "Git [F]iles" })
             vim.keymap.set("n", "<leader>fs", require('telescope.builtin').git_status, { desc = "Git [S]tatus" })
             vim.keymap.set("n", "<leader><leader>", require('telescope.builtin').buffers)
+            vim.keymap.set("n", "<leader>fl", require('telescope.builtin').lsp_document_symbols, { desc = "[L]SP Symbols" })
+            vim.keymap.set("n", "<leader>fw", require('telescope.builtin').lsp_workspace_symbols, { desc = "[W]orkspace Symbols" })
         end
     }
 }

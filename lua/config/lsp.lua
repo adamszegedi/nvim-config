@@ -17,6 +17,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         if not client then return end
 
+        vim.keymap.set('n', 'grd', vim.lsp.buf.definition, { buffer = args.buf, desc = 'Go to [D]efinition' })
+        vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, { buffer = args.buf, desc = 'Signature Help' })
+        vim.keymap.set('n', '<leader>cf', function() vim.lsp.buf.format({ bufnr = args.buf }) end, { buffer = args.buf, desc = '[F]ormat' })
+
         local filetype = vim.bo.filetype
 
         if filetype == "lua" or filetype == "rust" then
