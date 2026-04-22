@@ -20,6 +20,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'grd', vim.lsp.buf.definition, { buffer = args.buf, desc = 'Go to [D]efinition' })
         vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, { buffer = args.buf, desc = 'Signature Help' })
         vim.keymap.set('n', '<leader>cf', function() vim.lsp.buf.format({ bufnr = args.buf }) end, { buffer = args.buf, desc = '[F]ormat' })
+        vim.keymap.set('n', '<leader>cl', require('telescope.builtin').lsp_document_symbols, { buffer = args.buf, desc = '[L]SP Symbols' })
+        vim.keymap.set('n', '<leader>cw', require('telescope.builtin').lsp_workspace_symbols, { buffer = args.buf, desc = '[W]orkspace Symbols' })
 
         local filetype = vim.bo.filetype
 
