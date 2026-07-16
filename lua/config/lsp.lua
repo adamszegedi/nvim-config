@@ -17,7 +17,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         if not client then return end
 
-        vim.keymap.set('n', 'grd', vim.lsp.buf.definition, { buffer = args.buf, desc = 'Go to [D]efinition' })
         vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, { buffer = args.buf, desc = 'Signature Help' })
         vim.keymap.set('n', '<leader>cf', function() vim.lsp.buf.format({ bufnr = args.buf }) end, { buffer = args.buf, desc = '[F]ormat' })
         vim.keymap.set('n', '<leader>cl', require('telescope.builtin').lsp_document_symbols, { buffer = args.buf, desc = '[L]SP Symbols' })
@@ -27,7 +26,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         if filetype == "lua" or filetype == "rust" then
             -- Format the current buffer on save
+            local group = vim.api.nvim_create_augroup('lsp_format_' .. args.buf, { clear = true })
             vim.api.nvim_create_autocmd('BufWritePre', {
+                group = group,
                 buffer = args.buf,
                 callback = function()
                     vim.lsp.buf.format({ bufnr = args.buf, id = client.id })

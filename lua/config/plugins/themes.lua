@@ -16,20 +16,6 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
 return {
     {
-        'rebelot/kanagawa.nvim',
-        lazy = true,
-        priority = 1000,
-        opts = {},
-        config = function()
-            vim.o.background = "dark"
-        end,
-    },
-    {
-        'folke/tokyonight.nvim',
-        lazy = true,
-        opts = {},
-    },
-    {
         'sainnhe/gruvbox-material',
         priority = 1000,
         config = function()

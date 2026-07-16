@@ -34,6 +34,7 @@ vim.opt.undodir = undodir
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 vim.opt.scrolloff = 5
 vim.opt.signcolumn = "yes"

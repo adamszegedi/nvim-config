@@ -5,6 +5,14 @@ return {
             'nvim-lua/plenary.nvim',
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
         },
+        keys = {
+            { "<leader>fh", function() require('telescope.builtin').help_tags() end,   desc = "[H]elp Tags" },
+            { "<leader>fd", function() require('telescope.builtin').find_files() end,  desc = "[F]iles" },
+            { "<leader>fg", function() require('telescope.builtin').live_grep() end,   desc = "[G]rep" },
+            { "<leader>ff", function() require('telescope.builtin').git_files() end,   desc = "Git [F]iles" },
+            { "<leader>fs", function() require('telescope.builtin').git_status() end,  desc = "Git [S]tatus" },
+            { "<leader><leader>", function() require('telescope.builtin').buffers() end },
+        },
         config = function()
             require('telescope').setup {
                 pickers = {
@@ -25,12 +33,6 @@ return {
                 }
             }
             require('telescope').load_extension('fzf')
-            vim.keymap.set("n", "<leader>fh", require('telescope.builtin').help_tags, { desc = "[H]elp Tags" })
-            vim.keymap.set("n", "<leader>fd", require('telescope.builtin').find_files, { desc = "[F]iles" })
-            vim.keymap.set("n", "<leader>fg", require('telescope.builtin').live_grep, { desc = "[G]rep" })
-            vim.keymap.set("n", "<leader>ff", require('telescope.builtin').git_files, { desc = "Git [F]iles" })
-            vim.keymap.set("n", "<leader>fs", require('telescope.builtin').git_status, { desc = "Git [S]tatus" })
-            vim.keymap.set("n", "<leader><leader>", require('telescope.builtin').buffers)
         end
     }
 }
