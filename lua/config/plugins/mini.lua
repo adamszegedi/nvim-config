@@ -8,6 +8,10 @@ return {
             local icons = require 'mini.icons'
             icons.setup()
             MiniIcons.mock_nvim_web_devicons()
+
+            require('mini.pairs').setup()
+            require('mini.surround').setup()
+            require('mini.comment').setup()
         end
     },
 }

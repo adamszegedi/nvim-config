@@ -1,3 +1,3 @@
 return {
-    { 'williamboman/mason.nvim', opts = {} },
+    { 'williamboman/mason.nvim', cmd = { 'Mason', 'MasonInstall', 'MasonUpdate', 'MasonUninstall' }, opts = {} },
 }

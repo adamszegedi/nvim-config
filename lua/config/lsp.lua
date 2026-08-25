@@ -16,7 +16,7 @@ vim.lsp.config('rust_analyzer', {
 vim.lsp.config('jdtls', {
     cmd = {
         'jdtls',
-        '-data', vim.fn.stdpath('cache') .. '/jdtls-workspace/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t'),
+        '-data', vim.fn.stdpath('cache') .. '/jdtls-workspace/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':p:t'),
     },
 });
 
@@ -25,7 +25,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         if not client then return end
 
-        vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, { buffer = args.buf, desc = 'Signature Help' })
+        vim.keymap.set('n', 'grd', vim.lsp.buf.definition, { buffer = args.buf, desc = '[D]efinition' })
+        vim.keymap.set('n', 'grD', vim.lsp.buf.declaration, { buffer = args.buf, desc = '[D]eclaration' })
+        vim.keymap.set('n', 'gri', vim.lsp.buf.implementation, { buffer = args.buf, desc = '[I]mplementation' })
+        vim.keymap.set('n', 'grr', vim.lsp.buf.references, { buffer = args.buf, desc = '[R]eferences' })
+        vim.keymap.set('n', 'gra', vim.lsp.buf.code_action, { buffer = args.buf, desc = 'Code [A]ction' })
+        vim.keymap.set('n', 'grn', vim.lsp.buf.rename, { buffer = args.buf, desc = 'Re[n]ame' })
+        vim.keymap.set('n', 'grt', vim.lsp.buf.type_definition, { buffer = args.buf, desc = '[T]ype Definition' })
+
         vim.keymap.set('n', '<leader>cf', function() vim.lsp.buf.format({ bufnr = args.buf }) end, { buffer = args.buf, desc = '[F]ormat' })
         vim.keymap.set('n', '<leader>cl', require('telescope.builtin').lsp_document_symbols, { buffer = args.buf, desc = '[L]SP Symbols' })
         vim.keymap.set('n', '<leader>cw', require('telescope.builtin').lsp_workspace_symbols, { buffer = args.buf, desc = '[W]orkspace Symbols' })
@@ -37,7 +44,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
             end, { buffer = args.buf, desc = '[H]int Toggle' })
         end
 
-        local filetype = vim.bo.filetype
+        local filetype = vim.bo[args.buf].filetype
 
         local no_format = {
             typescript = true,
@@ -48,7 +55,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         if not no_format[filetype] then
             -- Format the current buffer on save
-            local group = vim.api.nvim_create_augroup('lsp_format_' .. args.buf, { clear = true })
+            local group = vim.api.nvim_create_augroup('lsp_format_' .. args.buf .. '_' .. client.id, { clear = true })
             vim.api.nvim_create_autocmd('BufWritePre', {
                 group = group,
                 buffer = args.buf,

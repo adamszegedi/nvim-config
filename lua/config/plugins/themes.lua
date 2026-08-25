@@ -11,6 +11,7 @@ local function apply_float_overrides()
 end
 
 vim.api.nvim_create_autocmd('ColorScheme', {
+    group = vim.api.nvim_create_augroup('theme-float-overrides', { clear = true }),
     callback = apply_float_overrides,
 })
 
@@ -24,7 +25,11 @@ return {
             vim.g.gruvbox_material_foreground = 'material'  -- muted parchment #D4BE98
             vim.g.gruvbox_material_enable_italic = true
             vim.g.gruvbox_material_better_performance = 1
-            vim.cmd.colorscheme('gruvbox-material')
+            local ok = pcall(vim.cmd.colorscheme, 'gruvbox-material')
+            if not ok then
+                vim.notify('gruvbox-material colorscheme failed to load, falling back to default', vim.log.levels.WARN)
+                vim.cmd.colorscheme('habamax')
+            end
         end,
     },
 }
