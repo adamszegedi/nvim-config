@@ -1,3 +1,3 @@
 return {
-    { 'neovim/nvim-lspconfig', event = { 'BufReadPre', 'BufNewFile' } },
+    { 'neovim/nvim-lspconfig' },
 }
