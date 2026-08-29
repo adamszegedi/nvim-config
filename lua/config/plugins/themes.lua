@@ -17,19 +17,26 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
 return {
     {
-        'sainnhe/gruvbox-material',
+        'rebelot/kanagawa.nvim',
         priority = 1000,
         config = function()
             vim.o.background = 'dark'
+            vim.g.kanagawa_theme = 'wave'
+            local ok = pcall(vim.cmd.colorscheme, 'kanagawa-wave')
+            if not ok then
+                vim.notify('kanagawa-wave colorscheme failed to load, falling back to default', vim.log.levels.WARN)
+                vim.cmd.colorscheme('habamax')
+            end
+        end,
+    },
+    {
+        'sainnhe/gruvbox-material',
+        lazy = true,
+        config = function()
             vim.g.gruvbox_material_background = 'medium'      -- the one we want: #32302f
             vim.g.gruvbox_material_foreground = 'material'  -- muted parchment #D4BE98
             vim.g.gruvbox_material_enable_italic = true
             vim.g.gruvbox_material_better_performance = 1
-            local ok = pcall(vim.cmd.colorscheme, 'gruvbox-material')
-            if not ok then
-                vim.notify('gruvbox-material colorscheme failed to load, falling back to default', vim.log.levels.WARN)
-                vim.cmd.colorscheme('habamax')
-            end
         end,
     },
 }
