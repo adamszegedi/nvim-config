@@ -29,7 +29,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'grd', vim.lsp.buf.definition, { buffer = args.buf, desc = '[D]efinition' })
         vim.keymap.set('n', 'grD', vim.lsp.buf.declaration, { buffer = args.buf, desc = '[D]eclaration' })
         vim.keymap.set('n', 'gri', vim.lsp.buf.implementation, { buffer = args.buf, desc = '[I]mplementation' })
-        vim.keymap.set('n', 'grr', vim.lsp.buf.references, { buffer = args.buf, desc = '[R]eferences' })
+        vim.keymap.set('n', 'grr', function()
+            require('telescope.builtin').lsp_references(require('telescope.themes').get_ivy {
+                path_display = { 'smart' },
+            })
+        end, { buffer = args.buf, desc = '[R]eferences' })
         vim.keymap.set('n', 'gra', vim.lsp.buf.code_action, { buffer = args.buf, desc = 'Code [A]ction' })
         vim.keymap.set('n', 'grn', vim.lsp.buf.rename, { buffer = args.buf, desc = 'Re[n]ame' })
         vim.keymap.set('n', 'grt', vim.lsp.buf.type_definition, { buffer = args.buf, desc = '[T]ype Definition' })
