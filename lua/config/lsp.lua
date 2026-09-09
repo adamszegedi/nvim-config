@@ -15,6 +15,7 @@ vim.lsp.config('rust_analyzer', {
 
 vim.lsp.config('jdtls', {
     cmd = {
+        'mise', 'exec', 'java@temurin-21', '--',
         'jdtls',
         '-data', vim.fn.stdpath('cache') .. '/jdtls-workspace/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':p:t'),
     },
